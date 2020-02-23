@@ -1,0 +1,91 @@
+<br>
+
+<style>
+    h1 {
+        display: block;
+        font-size: 2em;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+        margin-left: 0;
+        margin-right: 0;
+        font-weight: bold;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<img src="C:\Users\milim\Desktop\test\test1.1\web\imageProduits\mastercard.png" style="width: 70px;height: 30px" />
+<img src="C:\Users\milim\Desktop\test\test1.1\web\imageProduits\paypal.png" style="width: 70px;height: 30px" />
+<img src="C:\Users\milim\Desktop\test\test1.1\web\imageProduits\ww.png" style="width: 70px;height: 30px" />
+<div>
+    <br> </br>
+<center>
+    <h1 style="font-weight : 700;">HuntKingdom©</h1>
+</center>
+    </div>
+<br> </br>
+<br> </br>
+<br> </br>
+
+<div>
+    <h3>Bonjour Mr/Madame {{ user.username }},</h3>
+</div>
+<div>
+    <h3> votre commande de {{ commande.quantite }} {{ commande.produit.nom }} est effectuée et payée avec succés  !</h3>
+</div>
+<center>
+    <h1>Voici votre bon de commande</h1>
+
+</center>
+
+
+
+<table class="table">
+    <thead>
+    <tr>
+
+        <th>Nom Produit</th>
+        <th>Quantité</th>
+        <th>Prix Total</th>
+        <th>Etat</th>
+        <th>Paiement</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+
+
+
+        <tr>
+
+
+            <td > {{ commande.produit.nom }} </td>
+            <td class="table-danger">{{ commande.quantite }}</td>
+            <td class="" >{{ commande.prixtotal }}</td>
+            <td class="table-warning" >{{ commande.etat }}</td>
+            <td class="table-warning" >Commande payée</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+<center>
+
+</center>
+
+
+</html>

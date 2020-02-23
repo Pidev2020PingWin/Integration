@@ -1,0 +1,95 @@
+{% extends "@Admin/Default/back.html.twig" %}
+
+{% block body %}
+
+    <div class="bs-example widget-shadow" data-example-id="contextual-table">
+        <h3> Liste des formateurs:</h3>
+
+
+        <table border="2">
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Image</th>
+            <th>Suppression</th>
+            <th>Modification</th>
+        </tr>
+        {% for formateur in formateurs %}
+
+            <tr>
+
+                <td>{{ formateur.nom }}</td>
+                <td>{{ formateur.prenom }}</td>
+
+                <td>  <img src="{{ asset('imagesFormation/') }}{{ formateur.nomImage }} " style="width: 260px;height: 240px" class="img-thumbnail img-fluid" alt="">
+                </td>
+
+                <td><a href="{{ path("remove_Formateur",{'id':formateur.id})}}">Supprimer</td>
+
+
+                <td><a href="{{ path("update_Formateur",{'id':formateur.id})}}">Modifier</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+     {#   <table class="table">
+
+            <thead>
+            <tr >
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Description</th>
+                <th>Heure</th>
+                <th>Image</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <div class="row" id="entitiesNav">
+                {% set i =0 %}
+                {% for formation in formations  %}
+                {% set i=i+1 %}
+                <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+
+                    <div class="product-toys-info">
+                        <div class="men-pro-item">
+                            <div class="men-thumb-item">
+                                <img src="{{ asset('imagesFormation/') }}{{ formation.nomImage }} " style="width: 260px;height: 240px" class="img-thumbnail img-fluid" alt="">
+                                <div class="men-cart-pro">
+
+
+                                </div>
+                                <span class="product-new-top">{{ formation.type }}</span>
+                            </div>
+
+                                            <h4>
+                                                <a>{{ formation.nom }}</a>
+                                            </h4>
+                                            <div class="grid-price mt-2">
+                                                <span class="money ">{{formation.date|date("m/d/y") }}</span>
+                                            </div>
+
+    </div>
+                        </div>
+                    </div>
+
+                    </tbody>
+                    </table> #}
+                    </div>
+
+
+
+    <div class="clearfix"></div>
+
+
+
+
+
+
+
+{% endblock %}

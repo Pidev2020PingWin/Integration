@@ -1,0 +1,172 @@
+{% extends "@Admin/Default/back.html.twig" %}
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 30px;
+            text-align: left;
+            width: 10px;
+        }
+        table#t01 {
+            width: 100%;
+            background-color: #f1f1c1;
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        }
+        .myButton {
+            box-shadow: 3px 4px 0px 0px #899599;
+            background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+            background-color:#ededed;
+            border-radius:15px;
+            border:1px solid #d6bcd6;
+            display:inline-block;
+            cursor:pointer;
+            color:#3a8a9e;
+            font-family:Arial;
+            font-size:17px;
+            padding:7px 25px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #e1e2ed;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+            background-color:#bab1ba;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+    </style>
+</head>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nom Client</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Quantité</th>
+        <th>Prix Total</th>
+        <th>Etat de la commande</th>
+        <th>Quantité du Stock</th>
+        <th> Valider </th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    {% set nb=0 %}
+    {% set total=0  %}
+
+    {%  for entity in commandes  %}
+
+            <tr class="rem1">
+                <td > {{ entity.user.username }}</td>
+                <td > {{ entity.produit.description }}</td>
+                <td class="invert-image"><a > <img src="{{ asset('imageProduits\\' ~ entity.produit.nomimage) }} " style="width:2500px;height: 100px" class="img-thumbnail img-fluid" alt="" ></a></td>
+                <td >
+                    {{ entity.quantite }}
+                </td>
+                <td >{{ entity.prixtotal }} DT </td>
+                {% if entity.etat =="Non Validé" %}
+                <td> <a style="color:#FF0000">{{ entity.etat }}</a>   </td>
+
+                {% else  %}
+                    <td> <a style="color:green">{{ entity.etat }}</a>   </td>
+                {% endif %}
+                <td > {{ entity.produit.quantite }}</td>
+                    <div class="rem">
+
+
+                        <a href="{{ path('supprimercommande',{'id':entity.id}) }}">
+                            <i width="1000px" class="close1">
+
+                            </i>
+                        </a>
+                        {% if (entity.quantite <= entity.produit.quantite) and (entity.etat!="Validé") %}
+<td> <a href="{{ path('valider_commande',{'id':entity.id}) }}"> Valider </td>
+                        {% elseif entity.etat=="Validé" %}
+                        <td> <a href="{{ path('mail',{'id':entity.id}) }}"> Envoyer Mail Confirmation </td>
+                        <a>
+                            <i width="1000px" class="close1">
+
+                            </i>
+                            {% else %}
+                            <td> <center> La quantité de la commande surpasse la quantite disponible</center>
+                                <a href="{{ path('invalid',{'id':entity.id}) }}"> Désapprouver>
+
+
+{% endif %}
+                    </div>
+
+                </td>
+                <div class="rem">
+
+
+                    <a href="{{ path('invalid',{'id':entity.id}) }}">
+                        <i width="1000px" class="close1">
+
+                        </i>
+                    </a>
+
+
+
+                </div>
+
+
+                </a>
+                {% if (entity.etat=="Non Validé") and ( entity.quantite < entity.produit.quantite  ) %}
+                <td class="invert">
+                    <div class="rem">
+
+
+                        <a href="{{ path('invalid',{'id':entity.id}) }}"> Désapprouver>
+
+                        </a>
+
+
+
+                    </div>
+                </td>
+
+
+{% endif %}
+
+            </tr>
+            {% set nb= nb + 1 %}
+            {% set total= total + entity.prixtotal  %}
+
+    {% endfor %}
+
+    </tbody>
+</table>
+<center>
+    <div class="checkout-right-basket">
+        <ul>
+            <li>Nombre de Produits : <span>{{   nb  }} Produits </span></li>
+            <li>Total : <span>{{   total  }} DT</span></li>
+        </ul>
+        <br> <br>
+
+
+    </div>
+</center>
+
+{% endblock %}

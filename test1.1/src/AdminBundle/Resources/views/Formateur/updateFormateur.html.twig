@@ -1,0 +1,61 @@
+{% extends "@Admin/Default/back.html.twig" %}
+
+{% block body %}
+
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+
+
+            {{ form_start(form) }}
+
+
+
+            <table align="center">
+                <form action="#" method="post">
+
+                    <div class=" agile-wls-contact-mid">
+
+                        <h3>Modifier les informations de {{ nom }}</h3>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Nom du formateur </label>
+                            {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':"Saisir le nom du formateur"}}) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Prénom du formateur </label>
+                            {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':"Saisir le prenom du formateur"}}) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+
+
+
+                        <div class="controls">
+                            <label class="control-label">Choisir une nouvelle photo du formateur  </label>
+                            {{ form_widget(form.file) }}
+                            {{ form_errors(form.file) }}
+                        </div>
+
+                        <button type="submit" class="btn subscrib-btnn" name="_submit" id="_submit" onclick="var GivenDate = document.getElementById('dat').value;
+                                                                                                        var CurrentDate = new Date();
+                                                                                                        GivenDate = new Date(GivenDate);
+                                                                                                        if( GivenDate <= CurrentDate){
+                                                                                                            alert('invalide!donner une date supérieure à la date courrante ');
+                                                                                                            return false;
+                                                                                                            }">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 col-sm-12">
+
+                                <button type="submit" class="btn btn-default">Modifier</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </table>
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

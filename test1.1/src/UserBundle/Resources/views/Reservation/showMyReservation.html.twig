@@ -1,0 +1,107 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block slide %}
+    <div class="inner_page-banner one-img">
+    </div>
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="index.html">Ma réservation</a>
+                    <span>/</span>
+                </li>
+                <li>Consulter</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+{% block body %}
+
+    <!-- price range -->
+
+    <div class="range">
+
+<h5>Vous devrez  être actif pour gagner avec nous et avoir au moins 3 réservations ou plus </h5>
+        <a href="{{ path("Cadeaux_Formation")}}" id="participer" class="link-product-add-cart">consulter mes points cadeaux</a>
+
+
+
+        <div class="inner-men-cart-pro">
+
+
+
+        </div>
+        <ul class="dropdown-menu6">
+            <li>
+
+                <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header" style="left: 0.555556%; width: 66.1111%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0.555556%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 66.6667%;"></a></div>
+                <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;">
+            </li>
+        </ul>
+    </div>
+    <!-- //price range -->
+    <section class="blog py-lg-4 py-md-3 py-sm-3 py-3">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+            <h3 class="title clr text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Votre vie active au sein de Hunt Kingdom</h3>
+            {% if formations|length == 0 %}
+                <tr>
+                <h1> <td colspan="7"><center>Vous n'avez aucune réservation!</center></td></h1>
+                </tr>
+            {% endif %}
+            <div class="slid-img">
+
+                <ul id="flexiselDemo1">
+
+                    {% for formation in formations %}
+                        <li>
+                            <div class="agileinfo_port_grid">
+                                <img src="{{ asset('imagesFormation/') }}{{ formation.nomImage }}" alt=" " class="img-fluid " height="250" width="250" />
+                                <div class="banner-right-icon">
+                                    <h4 class="pt-3">{{ formation.nom }}</h4>
+                                </div>
+                                <div class="outs_more-buttn">
+                                    <a href=" {{ path("Avis_Formation",{'id':formation.id})}}">Avis</a>
+                                    <a href="{{ path("Annuler_MyReservation",{'id':formation.id})}}">Annuler</a>
+                                </div>
+
+                            </div>
+                        </li>
+                    {% endfor %}
+
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    </div>
+    </div>
+{% endblock %}
+{% block login %}
+    <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+
+        {% endif %}
+    </div>
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+
+{% endblock %}

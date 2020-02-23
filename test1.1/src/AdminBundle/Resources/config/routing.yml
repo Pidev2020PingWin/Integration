@@ -1,0 +1,99 @@
+admin_homepage:
+    path:     /back
+    defaults: { _controller: AdminBundle:Default:back }
+demande_list:
+    path:     /demandelist
+    defaults: { _controller: AdminBundle:Evenement:list }
+demande_accept:
+    path:     /demande_accept/{id}
+    defaults: { _controller: AdminBundle:Evenement:accepter }
+demande_refus:
+    path:     /demande_refus/{id}
+    defaults: { _controller: AdminBundle:Evenement:refuser }
+rating_list:
+    path:     /ratinglist
+    defaults: { _controller: AdminBundle:Evenement:listR }
+event_mail:
+    path:     /mail/{id}
+    defaults: { _controller: AdminBundle:Evenement:mail }
+
+#Gestion formation tesnime
+formation_ajout:
+    path:     /ajoutformation
+    defaults: { _controller: AdminBundle:FormationBack:ajoutFormation }
+show_Formation:
+    path:     /showformation
+    defaults: { _controller: AdminBundle:FormationBack:showFormation }
+remove_Formation:
+    path:     /remove_Formation
+    defaults: { _controller: AdminBundle:FormationBack:RemoveFormation }
+update_Formation:
+    path:     /update_Formation/{id}
+    defaults: { _controller: AdminBundle:FormationBack:updateFormation }
+formateur_ajout:
+    path:     /ajoutformateur
+    defaults: { _controller: AdminBundle:Formateur:ajoutFormateur }
+show_Formateur:
+    path:     /showformateur
+    defaults: { _controller: AdminBundle:Formateur:showFormateur }
+remove_Formateur:
+    path:     /remove_Formateur
+    defaults: { _controller: AdminBundle:Formateur:RemoveFormateur }
+update_Formateur:
+    path:     /update_Formateur/{id}
+    defaults: { _controller: AdminBundle:Formateur:updateFormateur }
+chart_Formation:
+    path:     /ChartFormation
+    defaults: { _controller: AdminBundle:FormationBack:stat }
+show_Avis:
+    path:     /ShowAvis
+    defaults: { _controller: AdminBundle:FormationBack:showAvis }
+reservation_mail:
+    path:     /composemail/{id}
+    defaults: { _controller: AdminBundle:FormationBack:mail }
+
+#GestionCommande
+
+aff_prod:
+    path:     /aff_prod
+    defaults: { _controller: UserBundle:Produit:afficher_produit }
+
+supprimerproduit:
+    path:     /afficher_produit/{id}
+    defaults: { _controller: UserBundle:Produit:supprimerproduit }
+
+modifier_produit:
+    path:     /modifier_produit/{id}
+    defaults: { _controller: UserBundle:Produit:modifierproduit }
+
+ajout_produit:
+    path:     /ajout_prod
+    defaults: { _controller: UserBundle:Produit:ajoutproduit }
+
+ratingadmin:
+    path:     /rating
+    defaults: { _controller: UserBundle:Ratingp:afficher_rating }
+
+ajout_categorie:
+    path:     /ajout_cat
+    defaults: { _controller: UserBundle:Categorie:ajoutCategorie }
+
+afficher_categorie:
+    path:     /aff_cat
+    defaults: { _controller: UserBundle:Categorie:afficher_categorie }
+
+supprimercategorie:
+    path:     /afficher_categorie/{id}
+    defaults: { _controller: UserBundle:Categorie:supprimercategorie }
+
+modifier_categorie:
+    path:     /modifier_categorie/{id}
+    defaults: { _controller: UserBundle:Categorie:modifiercategorie }
+
+commande_back:
+    path:     /commande_back
+    defaults: { _controller: UserBundle:Commande:afficher_commande_back }
+
+
+
+

@@ -1,0 +1,87 @@
+{% extends "@User/Default/index.html.twig" %}
+{% block slide %}
+    <div class="inner_page-banner one-img">
+    </div>
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="{{ path('user_homepage') }}">Index</a>
+                    <span>/</span>
+                </li>
+                <li>Demande de participation</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+{% block body %}
+    <section class="about py-lg-4 py-md-3 py-sm-3 py-3">
+        <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
+
+            <div class="about-innergrid-agile text-center">
+                <h4>Vous vouler rejoindre l'event {{ event.nomEvent }}</h4>
+                {% if demande.etat == "en cours1"%}
+                    <p class="mb-3">votre demande a été enregistrée avec succès, veuillez attendre l'approbation de l'administrateur , une notification vous sera envoyée dès que l'administrateur le traitera .</p>
+                    <div>
+                        <a class="btn btn-block sent-butnn" href={{ path("Annuler_MyParticipation",{'id':event.idEvent})}} >
+                            <div class="close1"> </div>
+                        Annuler ma demande !</a>
+                    </div>
+                {% endif %}
+                {% if demande.etat == "en cours2"%}
+                <p class="mb-3">votre demande est déja en cours, veuillez attendre l'approbation de l'administrateur , une notification vous sera envoyée dès que l'administrateur le traitera .</p>
+                    <div>
+                        <a class="btn btn-block sent-butnn" href={{ path("Annuler_MyParticipation",{'id':event.idEvent})}} >
+                            <div class="close1"> </div>
+                            Annuler ma demande !</a>
+                    </div>
+
+                {% endif %}
+                {% if demande.etat == "valider"%}
+                    <p class="mb-3">Félicitation ! votre demande de participation de l'event {{ event.nomEvent }} a été acceptée, vous pouvez accéder à l'événement à partir d'ici.</p>
+
+                    <div>
+                        <a class="btn btn-block sent-butnn" href={{ path("Annuler_MyParticipation",{'id':event.idEvent})}} >
+                            <div class="close1"> </div>
+                            Annuler ma demande !</a>
+                    </div>
+                    <button type="submit" class="btn btn-block sent-butnn" onclick="location.href='/test1.1/web/app_dev.php/user/about/{{ event.idEvent }}'" >accéder</button>
+                {% endif %}
+                {% if demande.etat == "refuser"%}
+                    <p class="mb-3">Désoler ,votre demande de participation de l'event {{ event.nomEvent }}  a été refusée par l'administrateur .</p>
+                {% endif %}
+
+                <div class=" img-toy-w3l-top">
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+{% block login %}
+    <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+
+        {% endif %}
+    </div>
+
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <div>
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+    </div>
+{% endblock %}

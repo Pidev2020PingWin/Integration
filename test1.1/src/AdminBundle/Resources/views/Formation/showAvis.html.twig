@@ -1,0 +1,38 @@
+{% extends "@Admin/Default/back.html.twig" %}
+
+{% block body %}
+
+    <div class="bs-example widget-shadow" data-example-id="contextual-table">
+        <h3> Tous les avis:</h3>
+        <table class="table">
+            <thead>
+            <tr >
+                <th>Nom du membre</th>
+                <th>Nom de la formation</th>
+                <th>Etat</th>
+                <th>Avis</th>
+                <th>Répondre par email</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for avis in avis  %}
+
+
+                    <tr class="info">
+
+                        <th >{{ avis.idu }}</th>
+                        <th >{{ avis.idformation.nom }}</th>
+                        <th >{{ avis.etat }}</th>
+                        <th >{{ avis.avis }}</th>
+                        <th><a href="{{ path('reservation_mail',{'id':avis.idu}) }}" onclick="return confirm('envoyer un mail ?')"><i class="fa fa-envelope"></i></a></th>
+
+                    </tr>
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

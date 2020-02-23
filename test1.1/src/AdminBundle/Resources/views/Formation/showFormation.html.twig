@@ -1,0 +1,111 @@
+{% extends "@Admin/Default/back.html.twig" %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('datePicker.css') }}" type="text/css">
+
+
+    <div class="bs-example widget-shadow" data-example-id="contextual-table">
+        <h3> Toutes les formations:</h3>
+
+
+        <table border="2">
+        <tr>
+            <th>Nom</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Lieu</th>
+            <th>Description</th>
+            <th>Heure</th>
+            <th>Formateur</th>
+            <th>Nombre de places</th>
+            <th>Image</th>
+            <th>Suppression</th>
+            <th>Modification</th>
+        </tr>
+        {% for formation in formations %}
+
+
+            <tr>
+
+                <td>{{ formation.nom }}</td>
+                <td>{{ formation.type }}</td>
+                <td>{{ formation.date|date("m/d/y") }}</td>
+                <td>{{ formation.lieu }}</td>
+                <td>{{ formation.description }}</td>
+                <td>{{ formation.heure }}</td>
+                <td>{{ formation.formateur.nom }}</td>
+                <td>{{ formation.nbrplace }}</td>
+
+                <td>  <img src="{{ asset('imagesFormation/') }}{{ formation.nomImage }} " style="width: 260px;height: 240px" class="img-thumbnail img-fluid" alt="">
+                </td>
+
+                <td><a href="{{ path("remove_Formation",{'id':formation.id})}}">Supprimer</td>
+
+
+                <td><a href="{{ path("update_Formation",{'id':formation.id})}}">Modifier</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+
+     {#   <table class="table">
+
+            <thead>
+            <tr >
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Description</th>
+                <th>Heure</th>
+                <th>Image</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <div class="row" id="entitiesNav">
+                {% set i =0 %}
+                {% for formation in formations  %}
+                {% set i=i+1 %}
+                <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+
+                    <div class="product-toys-info">
+                        <div class="men-pro-item">
+                            <div class="men-thumb-item">
+                                <img src="{{ asset('imagesFormation/') }}{{ formation.nomImage }} " style="width: 260px;height: 240px" class="img-thumbnail img-fluid" alt="">
+                                <div class="men-cart-pro">
+
+
+                                </div>
+                                <span class="product-new-top">{{ formation.type }}</span>
+                            </div>
+
+                                            <h4>
+                                                <a>{{ formation.nom }}</a>
+                                            </h4>
+                                            <div class="grid-price mt-2">
+                                                <span class="money ">{{formation.date|date("m/d/y") }}</span>
+                                            </div>
+
+    </div>
+                        </div>
+                    </div>
+
+                    </tbody>
+                    </table> #}
+                    </div>
+
+
+
+    <div class="clearfix"></div>
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "@Admin/Default/back.html.twig" %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="{{ asset('datePicker.css') }}" type="text/css">
+
+    <div class="left-ads-display col-lg-9">
+        <div class="row">
+
+
+            {{ form_start(form) }}
+
+
+
+            <table align="center">
+                <form action="#" method="post" >
+                    <div class=" agile-wls-contact-mid">
+
+                        <div class="form-group contact-forms">
+
+                            <label class="control-label" >Nom la formation </label>
+                            <input type="text" class="form-control"   name="nom" id="nom"pattern="[a-zA-Z]{4,}" title="Veuillez saisir minimum 4 lettres" required  />
+
+                       {# {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':"Saisir le nom de la formation"}}) }}
+                            {{ form_errors(form.nom) }}#}
+
+                        </div>
+
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Type de la formation </label>
+                            {{ form_widget(form.type,{'attr':{'class':'form-control','placeholder':"Saisir le type de la formation"}}) }}
+                            {{ form_errors(form.type) }}
+                        </div>
+
+
+                        <div class="form-group contact-forms">
+
+
+                            <label class="control-label">Date de la formation </label>
+
+                            <input type="date" class="form-control" rows="3"  name="date" id="dat">
+
+
+
+                        </div>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Lieu de la formation</label>
+                            {{ form_widget(form.lieu,{'attr':{'class':'form-control','placeholder':"Saisir le lieu de la formation"}}) }}
+                            {{ form_errors(form.lieu) }}
+                        </div>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Description de la formation </label>
+                            {{ form_widget(form.description,{'attr':{'class':'form-control','placeholder':"Saisir la description de la formation"}}) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">L'heure de la formation </label>
+                            {{ form_widget(form.heure,{'attr':{'class':'form-control','placeholder':"Saisir l'heure de la formation"}}) }}
+                            {{ form_errors(form.heure) }}
+                        </div>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Nombre de places permis </label>
+                            {{ form_widget(form.nbrplace,{'attr':{'class':'form-control','placeholder':"Saisir le nombre de places permis"}}) }}
+                            {{ form_errors(form.nbrplace) }}
+                        </div>
+
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Nom du formateur </label>
+                            {{ form_widget(form.formateur,{'attr':{'class':'form-control','placeholder':"Saisir le nom du formateur"}}) }}
+                            {{ form_errors(form.formateur) }}
+                        </div>
+                        <div class="form-group contact-forms">
+                            <label class="control-label">Photo de la formation </label>
+                            {{ form_widget(form.file) }}
+                            {{ form_errors(form.file) }}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 col-sm-12">
+                        <button type="submit" class="btn btn-default" name="_submit" id="_submit" onclick="var GivenDate = document.getElementById('dat').value;
+                                                                                                        var CurrentDate = new Date();
+                                                                                                        GivenDate = new Date(GivenDate);
+                                                                                                        if( GivenDate <= CurrentDate){
+                                                                                                            alert('invalide ! Veuillez entrer une date supérieure à la date courrante ');
+                                                                                                            return false;
+                                                                                                            }">Ajouter</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </table>
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

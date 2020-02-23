@@ -1,0 +1,172 @@
+user_homepage:
+    path:     /front
+    defaults: { _controller: UserBundle:Default:index }
+evenement_listmy:
+    path:     /listmyevent
+    defaults: { _controller: UserBundle:Evenement:listmy }
+evenement_update:
+    path:     /updateA/{id}
+    defaults: { _controller: UserBundle:Evenement:update }
+evenement_delete:
+    path:     /deleteA/{id}
+    defaults: { _controller: UserBundle:Evenement:delete }
+evenement_ajout:
+    path:     /ajoutevent
+    defaults: { _controller: UserBundle:Evenement:ajout }
+evenement_list:
+    path:     /listevenment
+    defaults: { _controller: UserBundle:Evenement:list }
+evenement_access:
+    path:     /evenementAccess/{id}
+    defaults: { _controller: UserBundle:Evenement:evenementAccess }
+evenement_about:
+    path:     /about/{id}
+    defaults: { _controller: UserBundle:Evenement:aboutEvenement }
+ajax_search:
+    path:     /search
+    defaults: { _controller: UserBundle:Evenement:search }
+delete_notif:
+    path:     /dnotif/{id}
+    defaults: { _controller: UserBundle:Notification:delete }
+Annuler_MyParticipation:
+    path:     /Annuler_MyParticipation/{id}
+    defaults: { _controller: UserBundle:Evenement:AnnulerParticipation }
+
+#Module Gestion Formation Tesnime
+
+formation_list:
+    path:     /listformation
+    defaults: { _controller: UserBundle:FormationFront:listFormation }
+Detail_Formation:
+    path:     /DetailFormation/{id}
+    defaults: { _controller: UserBundle:FormationFront:detailFormation }
+add_Reservation:
+    path:     /add_Reservation/{id}
+    defaults: { _controller: AdminBundle:Reservation:Reserver }
+show_MyReservation:
+    path:     /show_MyReservation
+    defaults: { _controller: AdminBundle:Reservation:showMyReservation }
+Annuler_MyReservation:
+    path:     /Annuler_MyReservation/{id}
+    defaults: { _controller: AdminBundle:Reservation:AnnulerReservation }
+ajax_search:
+    path:     /search
+    defaults: { _controller: UserBundle:FormationFront:search }
+Avis_Formation:
+    path:     /AvisFormation/{id}
+    defaults: { _controller: UserBundle:FormationFront:AvisFormation }
+Cadeaux_Formation:
+    path:     /CadeauxFormation
+    defaults: { _controller: UserBundle:FormationFront:PointsCadeaux }
+CodeCadeau_Formation:
+    path:     /CodeCadeau
+    defaults: { _controller: UserBundle:FormationFront:CodeCadeau }
+PdfCadeau_Formation:
+    path:     /PdfCadeau
+    defaults: { _controller: UserBundle:FormationFront:PdfCadeau }
+
+#Module gestion commande (yassine)
+produit:
+    path:     /produit
+    defaults: { _controller: UserBundle:Produit:Home }
+
+peche:
+    path:     /produit2
+    defaults: { _controller: UserBundle:Produit:Home2 }
+
+panier:
+    path:     /panier
+    defaults: { _controller: UserBundle:Commande:afficher_panier }
+
+back:
+    path:     /back
+    defaults: { _controller: UserBundle:User:back }
+
+ajout_categorie:
+    path:     /ajout_cat
+    defaults: { _controller: UserBundle:Categorie:ajoutCategorie }
+
+afficher_categorie:
+    path:     /aff_cat
+    defaults: { _controller: UserBundle:Categorie:afficher_categorie }
+
+supprimercategorie:
+    path:     /afficher_categorie/{id}
+    defaults: { _controller: UserBundle:Categorie:supprimercategorie }
+
+modifier_categorie:
+    path:     /modifier_categorie/{id}
+    defaults: { _controller: UserBundle:Categorie:modifiercategorie }
+
+ajout_produit:
+    path:     /ajout_prod
+    defaults: { _controller: UserBundle:Produit:ajoutproduit }
+
+aff_prod:
+    path:     /aff_prod
+    defaults: { _controller: UserBundle:Produit:afficher_produit }
+
+supprimerproduit:
+    path:     /afficher_produit/{id}
+    defaults: { _controller: UserBundle:Produit:supprimerproduit }
+
+modifier_produit:
+    path:     /modifier_produit/{id}
+    defaults: { _controller: UserBundle:Produit:modifierproduit }
+
+page_commande:
+    path:     /page_commande/{id}
+    defaults: { _controller: UserBundle:Commande:page_commande }
+
+page_commande2:
+    path:     /page_commande2/{id}
+    defaults: { _controller: UserBundle:Commande:page_commande2 }
+
+supprimercommande:
+    path:     /panier/{id}
+    defaults: { _controller: UserBundle:Commande:supprimercommande }
+
+commande_back:
+    path:     /commande_back
+    defaults: { _controller: UserBundle:Commande:afficher_commande_back }
+
+valider_commande:
+    path:     /commande_back/{id}
+    defaults: { _controller: UserBundle:Commande:ValiderCommande }
+
+invalid:
+    path:     /invalid/{id}
+    defaults: { _controller: UserBundle:Commande:invalid }
+
+ratingadmin:
+    path:     /rating
+    defaults: { _controller: UserBundle:Ratingp:afficher_rating }
+
+page_rating:
+    path:     /page_rating/{id}
+    defaults: { _controller: UserBundle:Ratingp:rating_chasse }
+
+page_rating2:
+    path:     /page_rating2/{id}
+    defaults: { _controller: UserBundle:Ratingp:rating_peche }
+
+mail:
+    path:     /mail/{id}
+    defaults: { _controller: UserBundle:Commande:mail}
+
+pay:
+    path:     /pay/{id}
+    defaults: { _controller: UserBundle:Payement:prepare }
+
+done:
+    path:     /done
+    defaults: { _controller: UserBundle:Payement:done }
+
+fait:
+    path:     /fait/{id}
+    defaults: { _controller: UserBundle:Commande:pdf }
+
+pdf:
+    path:     /pdf
+    defaults: { _controller: UserBundle:Commande:pdf2 }
+
