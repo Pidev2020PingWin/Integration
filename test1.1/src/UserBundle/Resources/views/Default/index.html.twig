@@ -144,7 +144,7 @@
                             Espéces
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link" href="#">Consulter les Espéces</a>
+                            <a class="nav-link" href="{{ path('affichercategoriefront') }}">Consulter les Espéces</a>
 
                         </div>
                     </li>
@@ -173,16 +173,11 @@
                             Informations
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link" href="#">Articles</a>
-                            <a class="nav-link " href="#">Forum Question/Réponse</a>
+                            <a class="nav-link" href={{ path('articles_ajouter') }}>Articles</a>
                         </div>
                     </li>
 
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <li class="nav-item">
-                            <a href="{{ path('admin_homepage') }}" class="nav-link">Back</a>
-                        </li>
-                    {% endif %}
+
 
 
                 </ul>

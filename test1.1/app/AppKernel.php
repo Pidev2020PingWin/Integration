@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new Skies\QRcodeBundle\SkiesQRcodeBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new Payum\Bundle\PayumBundle\PayumBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new Vich\UploaderBundle\VichUploaderBundle(),
 
 
 

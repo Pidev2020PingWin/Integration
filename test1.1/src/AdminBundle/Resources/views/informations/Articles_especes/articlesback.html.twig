@@ -1,0 +1,83 @@
+{% extends "@Admin/Default/back.html.twig" %}
+{%block body%}
+    <div class="md-form mt-0">
+        <th>  <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search"></th>
+        <center>
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+
+            <i class="material-icons">Search</i>
+
+        </button>
+
+        </center>
+
+    </div>
+{% for article in article %}
+    <div class="table-responsive">
+    <table class="table" id="tableacc">
+        <thead class="thead-light">
+        <tr class="bg-primary">
+            <th scope="col">#</th>
+            <th scope="col">id</th>
+            <th scope="col">titre</th>
+            <th scope="col">contenu</th>
+            <th scope="col">image</th>
+            <th scope="col">modifier</th>
+            <th scope="col">supprimer</th>
+            <th scope="col">ajouter</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg-primary">
+            <th scope="row">1</th>
+            <td>{{ article.id}}</td>
+            <td>{{ article.titre }}</td>
+            <td>{{ article.contenu|raw }}</td>
+            <td><img src="{{ asset('') }}{{ vich_uploader_asset(article, 'imageFile') }}"></td>
+            <td> <a  href="{{path('updateback',{'id':article.id})}}" class="btn btn-blue btn-round">
+                    modifier
+                    <div class="ripple-container"></div></a></td>
+            <td> <a  href="{{path('deleteback',{'id':article.id})}}" class="btn btn-blue btn-round">
+                    delete
+                    <div class="ripple-container"></div></a></td>
+            <td><a  href="{{path('ajoutback',{'id':article.id})}}" class="btn btn-blue btn-round">
+                    ajouter</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+    </div>
+
+{% endfor %}
+    <script>
+        $(document).ready(function(){
+            $('#search').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#tableacc tbody tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                        if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                        {
+                            found = 'true';
+                        }
+                    });
+                    if(found == 'true')
+                    {
+                        $(this).show();
+
+                    }
+                    else
+                    {
+                        $(this).hide();
+
+                    }
+                });
+            }
+        });
+    </script>
+
+
+{%endblock%}

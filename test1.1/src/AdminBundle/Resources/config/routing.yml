@@ -94,6 +94,39 @@ commande_back:
     path:     /commande_back
     defaults: { _controller: UserBundle:Commande:afficher_commande_back }
 
+#Gestion Espece (Omar)
+
+categorieespece:
+    path:     /categorieespece
+    defaults: { _controller: UserBundle:CategorieEspece:afficher_categorie }
+
+addcategorieespece:
+    path:     /addcategorieespece
+    defaults: { _controller: UserBundle:CategorieEspece:ajoutCategorie }
+
+supprimercategorieespece:
+    path:     /supprimercategorieespece/{id}
+    defaults: { _controller: UserBundle:CategorieEspece:supprimercategorie }
+
+modifiercategorieespece:
+    path:     /modifiercategorieespece/{id}
+    defaults: { _controller: UserBundle:CategorieEspece:modifiercategorie }
+
+afficherespeceback:
+    path:     /afficherespeceback
+    defaults: { _controller: UserBundle:Espece:afficherespeceback }
+
+addespece:
+    path:     /addespece
+    defaults: { _controller: UserBundle:Espece:ajoutespece }
+
+supprimerespece:
+    path:     /supprimerespece/{id}
+    defaults: { _controller: UserBundle:Espece:supprimerespece }
+
+modifierespece:
+    path:     /modifierespece/{id}
+    defaults: { _controller: UserBundle:Espece:modifierespece }
 
 
 

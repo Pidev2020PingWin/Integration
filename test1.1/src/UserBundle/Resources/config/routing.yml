@@ -170,3 +170,64 @@ pdf:
     path:     /pdf
     defaults: { _controller: UserBundle:Commande:pdf2 }
 
+#Gestion Espece
+afficherespecefront:
+    path:     /afficherespecefront/{id}
+    defaults: { _controller: UserBundle:Espece:afficherespecefront }
+
+affichercategoriefront:
+    path:     /affichercategoriefront
+    defaults: { _controller: UserBundle:CategorieEspece:afficher_categoriefront }
+
+    #alma
+articles_ajouter:
+    path:     /articles_ajouter
+    defaults: { _controller: UserBundle:Articles_especes:ajout}
+articles_supprimer:
+    path:     /articles_supprimer/{id}
+    defaults: { _controller: UserBundle:Articles_especes:delete}
+
+commentaire_supprimer:
+    path:     /commentaire_supprimer/{id}
+    defaults: { _controller: UserBundle:Articles_especes:deletecom}
+articles_afficher:
+    path:     /articles_afficher
+    defaults: { _controller: UserBundle:Articles_especes:Afficher}
+articles_update:
+    path:     /articles_update/{id}
+    defaults: { _controller: UserBundle:Articles_especes:update}
+question_reponse:
+    path:  /question_reponse/{article}
+    defaults: { _controller: UserBundle:Articles_especes:show}
+new_article:
+    path:  /new_article/
+    defaults: { _controller: UserBundle:Articles_especes:Affichernew}
+commentaire:
+    path:  /commentaire/{id}
+    defaults: { _controller: UserBundle:Articles_especes:show}
+
+afficherCommentaire:
+    path:     /afficherCommentaire
+    defaults: { _controller: UserBundle:Commentaire:AfficherCommentaire }
+ajouterCommentaire:
+    path:     /ajouterCommentaire
+    defaults: { _controller: UserBundle:Commentaire:ajouterCommentaire }
+updateCommentaire:
+    path:     /updateCommentaire{id}
+    defaults: { _controller: UserBundle:Commentaire:updateCommentaire }
+afficherback:
+    path:     /afficherback
+    defaults: { _controller: AdminBundle:Admin:afficherback }
+
+deleteback:
+    path:     /deleteback/{id}
+    defaults: { _controller: AdminBundle:Admin:deleteback }
+updateback:
+    path:     /updateback/{id}
+    defaults: { _controller: AdminBundle:Admin:updateback }
+ajoutback:
+    path:    /ajoutback
+    defaults: { _controller: AdminBundle:Admin:ajoutback }
+likearticle:
+    path:    /likearticle/{id}
+    defaults: { _controller: UserBundle:Articles_especes:likearticle }

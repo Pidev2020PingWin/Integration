@@ -1,0 +1,90 @@
+{% extends "@User/Default/index.html.twig" %}
+{%block body%}
+    <center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+        <br>
+        <br>
+        <br>
+        <div class="panel panel-success">
+            <div class="panel-body">Ajout_Article</div>
+        </div>
+
+            <div class="form-group">
+                {{ form_start(form, {'attr': { 'class' : 'form-control' , 'style': 'width:550px;'}}) }}
+
+
+
+                <label for="exampleInputEmail1">Titre</label>
+                <span  id="span2">le nombre des caractere entre 0 et 10</span>
+               {{ form_widget(form.titre)}}
+                <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contenu</label>
+                {{ form_widget(form.contenu)}}
+            </div>
+       <div class="form-group">
+            <label for="exampleInputPassword1">image</label>
+            {{ form_widget(form.imageFile)}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">date_pub</label>
+            {{ form_widget(form.datepub)}}
+        </div>
+            <div class="form-check">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        <br>
+        <br>
+
+        {{ form_end(form) }}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <script>
+            $(document).ready(function () {
+
+                $("#span2").hide();
+                $("#span1").hide();
+                $("#span4").hide();
+                $("#span5").hide();
+                $("#span6").hide();
+
+                $('#userbundle_articles_especes_titre').keyup(function () {
+
+                    var nom = $('#userbundle_articles_especes_titre').val();
+                    var test=/^[A-Z]+$/;
+                    if (test.test(nom)) {
+
+                        $('#span2').hide();
+
+                        $('#ajouter').prop('disabled', false);
+
+                    } else {
+                        $('#span2').show();
+
+
+
+                        $('#ajouter').prop('disabled', true);
+                    }
+                });
+
+
+
+            })
+        </script>
+{%endblock%}
+

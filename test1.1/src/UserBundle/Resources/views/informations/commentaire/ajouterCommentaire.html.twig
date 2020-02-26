@@ -1,0 +1,66 @@
+{% extends 'blog1.html.twig' %}
+{% block body %}
+    <br><br><br><br>
+    <div class="blog-single-content">
+
+        <div class="comment-area">
+            <ul class="comment-list">
+                <li class="parent">
+                    <div class="single-comment-wrap">
+                        <div class="thumb">
+                            <img alt="comment" src="{{ asset('front/img/blog/comment1.png') }}">
+                        </div>
+                        <div class="content">
+                            <h4 class="title">William Khan</h4>
+                            <div class="comment-content">
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="children">
+                        <li>
+                            <div class="single-comment-wrap">
+                                <div class="thumb">
+                                    <img alt="comment" src="{{ asset('front/img/blog/comment2.png') }}">
+                                </div>
+                                <div class="content">
+                                    <h4 class="title">Jalali khan</h4>
+                                    <div class="comment-content">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    <div class="single-comment-wrap">
+                        <div class="thumb">
+
+                            <img alt="comment" src="{{ asset('front/img/blog/comment3.png') }}">
+                        </div>
+
+                        <div class="content">
+                            <h4 class="title">Harvard Ali</h4>
+                            <div class="form-group">
+                                {{ form_widget(form.contenu) }}
+                                {{ form_widget(form.envoyer) }}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

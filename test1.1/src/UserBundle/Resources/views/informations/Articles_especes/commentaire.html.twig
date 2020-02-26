@@ -1,0 +1,86 @@
+{% extends 'blog1.html.twig' %}
+
+{% block body %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+    <div class="container">
+        <h2 class="text-center">Comment Form</h2>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="comment-area">
+
+                        <ul class="comment-list">
+                            <li class="parent">
+                                <div class="single-comment-wrap">
+
+
+
+                                    <form method="post" class="tm-form mt-60" id="formcomment">
+                                        <div class="tm-form-inner">
+
+                                            <div class="tm-form-field">
+                                                <textarea name="comment-content" cols="30"
+                                                          rows="7" placeholder="Enter your comment"></textarea>
+                                                <span class="tm-form-animatedline"></span>
+                                            </div>
+                                            <div class="tm-form-field">
+                                                <button type="submit" class="tm-button tm-button-dark">Post
+                                                    Comment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                    <div class="col-md-2">
+                        <img src="{{ asset('Articles_especes/alma.jpg')}}" class="img img-rounded img-fluid"/>
+                        <p class="text-secondary text-center"></p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{ app.user.username }}</strong></a>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+
+                        </p>
+                        {% for comment in comments  %}
+                        <div class="clearfix"></div>
+                        <p>
+                            {{a.contenu|raw }}
+                        </p>
+                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                        <a class="float-right btn text-white btn-danger"><i class="fa fa-comments"></i> Comments {{ numberofcomments }}</a>
+                            <a href="{{ path('likearticle',{id:a.id}) }}"><i class="fa fa-heart"></i>{{ numlikes }}</a>
+                        <a class="float-right btn text-white btn-danger" href="{{  path('commentaire_supprimer', {'id':comment.id}) }}"><i class="material-icons">delete</i></a>
+
+                        </p>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+{% endblock %}

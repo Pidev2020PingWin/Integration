@@ -1,0 +1,144 @@
+{% extends 'blog1.html.twig' %}
+
+{% block body %}
+    <br><br>
+    <br><br>
+
+    <div class="breadcrumb-style-7" >
+        <div class="breadcrumb-inner">
+            <h1 class="page-title">Comments {{ numberofcomments }}</h1>
+            <ul class="page-list">
+                <li><a href="#">Commentaire Details</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="blog-single-content">
+    <div class="container">
+
+
+        <div class="row">
+
+            <div class="blog-details-item">
+                <div class="thumb border-thumb">
+                    <div class="post-thumbnail">
+
+                    </div>
+                </div>
+
+                <div class="content margin-top-75">
+                    <h5 class="margin-bottom-30"> </h5>
+                    <p class="margin-top-30">{{a.titre}} </p><ul class="post-meta margin-top-100">
+                    <p class="margin-top-30">{{a.contenu|raw }} </p><ul class="post-meta margin-top-100">
+
+
+                        <li><a href="#"><i class="fa fa-user"></i> {{ app.user.username }}</a></li>
+                        <div class="col-md-2">
+                            <p class="text-secondary text-center"></p>
+                        </div>
+
+                        <li><a class="float-right btn text-white btn-success"><i class="fa fa-comments"></i> Comments {{ numberofcomments }}</a></li>
+                        <li><a href="{{ path('likearticle',{id:a.id}) }}"><i class="fa fa-heart"></i> {{ numlikes }}</a></li>
+                        {% if app.user %}
+                        <li>  <a href="{{ path('articles_update', {'id':a.id}) }} " class="float-right btn text-white btn-success">update</a></li>
+                        {% endif %}
+
+                        {% for comment in comments  %}
+                            <div class="comment-area">
+                                <ul class="comment-list">
+                                    <li class="parent">
+                                        <div class="single-comment-wrap">
+
+                                            <div class="thumb">
+                                            </div>
+                                            <div class="content">
+                                                <h4 class="title">{{ comment.user }}</h4>
+                                                <img src="{{ asset('Articles_especes/alma.jpg')}}" class="img img-rounded img-fluid"/>
+                                                <div class="comment-content">
+
+
+                                                    <p> {{ comment.id}}.</p>
+                                                    <p> {{ comment.datepub|date}}.</p>
+                                                    <p> {{ comment.contenu }}.</p>
+                                                </div>
+                                                <a style="color:#00ad45"href="{{  path('commentaire_supprimer', {'id':comment.id}) }}"><i class="fa fa-trash" aria-hidden="true">delete</i></a>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <section class='rating-widget'>
+
+                                <!-- Rating Stars Box -->
+                                <div class='rating-stars text-center'>
+                                    <ul id='stars'>
+                                        <li class='star' title='Poor' data-value='1'>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li class='star' title='Fair' data-value='2'>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li class='star' title='Good' data-value='3'>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li class='star' title='Excellent' data-value='4'>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                        <li class='star' title='WOW!!!' data-value='5'>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class='success-box'>
+                                    <div class='clearfix'></div>
+                                    <img alt='tick image' width='32' src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MjYuNjY3IDQyNi42NjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQyNi42NjcgNDI2LjY2NzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiM2QUMyNTk7IiBkPSJNMjEzLjMzMywwQzk1LjUxOCwwLDAsOTUuNTE0LDAsMjEzLjMzM3M5NS41MTgsMjEzLjMzMywyMTMuMzMzLDIxMy4zMzMgIGMxMTcuODI4LDAsMjEzLjMzMy05NS41MTQsMjEzLjMzMy0yMTMuMzMzUzMzMS4xNTcsMCwyMTMuMzMzLDB6IE0xNzQuMTk5LDMyMi45MThsLTkzLjkzNS05My45MzFsMzEuMzA5LTMxLjMwOWw2Mi42MjYsNjIuNjIyICBsMTQwLjg5NC0xNDAuODk4bDMxLjMwOSwzMS4zMDlMMTc0LjE5OSwzMjIuOTE4eiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K'/>
+                                    <div class='text-message'></div>
+                                    <div class='clearfix'></div>
+                                </div>
+
+
+
+                            </section>
+                        {% endfor %}
+                    </ul>
+
+
+<center>
+
+                    <div class="comment-area">
+
+                        <ul class="comment-list">
+                            <li class="parent">
+                                <div class="single-comment-wrap">
+
+                                    <form method="post" class="tm-form mt-30" id="formcomment">
+                                        <div class="tm-form-inner">
+
+                                            <div class="tm-form-field">
+                                                <textarea name="comment-content" cols="30" rows="7" placeholder="Enter your comment"></textarea>
+                                                <span class="tm-form-animatedline"></span>
+                                            </div>
+                                            <div class="tm-form-field">
+                                                <button type="submit" class="float-right btn text-white btn-success">Entrez votre commentaire
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

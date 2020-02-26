@@ -1,0 +1,57 @@
+{% extends 'blog1.html.twig' %}
+{% block body %}
+<br><br><br><br>
+<div class="col-xs-60">
+    <br>
+    {{ knp_pagination_render(Articles_especes) }}
+</div>
+<br><br>
+<div class="breadcrumb-style-3">
+    <div class="breadcrumb-inner">
+        <h1 class="page-title">NewArticles</h1>
+        <ul class="page-list">
+            <li><a href="index-2.html">Home</a></li>
+            <li><a href="#">new articles</a></li>
+        </ul>
+    </div>
+    </div>
+    <br><br>
+<center>
+{% for a in Articles_especes %}
+
+<div class="blog-content padding-top-120 padding-bottom-115">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="blog-left-content">
+                    <div class="img-item row margin-bottom-30">
+                        <div class="col-md-6">
+                            <div class="content">
+                                <h4>articles</h4>
+                                <span class="text">{{ a.titre }}</span>
+
+                                {{ a.contenu|raw }}
+
+                                <span class="pl-5 article-details float-right"> {{ a.datepub ? a.datepub|date}}</span>
+                                <img style="width: 400px;height: 350px;" src="{{ asset('') }}{{ vich_uploader_asset(a, 'imageFile') }}">
+                                <ul class="post-meta">
+                                    <li><a href="#"><i class="fa fa-comments"></i> 1200 Comments</a></li>
+                                    <li><a href="#"><i class="fa fa-share-alt"></i> 120 Share</a></li>
+                                </ul>
+
+                                <div class="margin-top-10   desktop-left">
+                                    <a href="{{  path('articles_supprimer', {'id':a.id}) }}" class="float-right btn text-white btn-success"> supprimer</a>
+                                    <a href="{{ path('articles_update', {'id':a.id}) }} "class="float-right btn text-white btn-success">update</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div></div></div>
+
+        </div></div></div></div>
+    </center>
+
+{% endfor %}
+
+                                    {% endblock %}

@@ -1,0 +1,113 @@
+{% extends "@User/Default/index.html.twig" %}
+{% block slide %}
+    <div class="inner_page-banner one-img">
+    </div>
+    <div class="using-border py-3">
+        <div class="inner_breadcrumb  ml-4">
+            <ul class="short_ls">
+                <li>
+                    <a href="#">Index</a>
+                    <span>/</span>
+                </li>
+                <li>Les especes</li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+
+<style type="text/css">
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+        margin: 0 4px;
+    }
+
+
+
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+
+</style>
+
+<class="contact py-lg-4 py-md-3 py-sm-3 py-3">
+<div class="container-fluid py-lg-5 py-md-4 py-sm-4 py-3">
+    <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3"> </h3>
+    <div class="row">
+
+
+
+
+        <form>
+
+        </form>
+
+
+
+
+        {#<!-- //Affichage -->#}
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        {%  for entity in espece %}
+
+                <div class="col-lg-4 col-md-6 col-sm-6 product-men women_two">
+                    <div class="product-toys-info">
+                        <div class="men-pro-item">
+                            <div class="men-thumb-item">
+
+                                <img src="{{ asset('imageEspece\\' ~ entity.nomimage) }} " style="width: 260px;height: 240px" class="img-thumbnail img-fluid" alt="">
+                                <div class="men-cart-pro">
+                                    <div class="inner-men-cart-pro">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="item-info-product">
+                                <div class="info-product-price">
+                                    <div class="grid_meta">
+                                        <div class="product_price">
+                                            <h4>
+                                                <a href="#">{{ entity.nom }}</a>
+                                            </h4>
+                                            <div class="grid-price mt-2">
+                                                <span class="money ">{{ entity.type }}</span>
+                                            </div>
+                                            <div class="grid-price mt-2">
+                                        <span class="money "> Description : {{ entity.description }}
+                                            </div>
+
+                                            <span class="money ">  {{ entity.categorie.nom }} </span>
+
+                                            <div class="toys single-item hvr-outline-out">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        {% endfor %}
+
+    </div>
+</div>
+</section>
+{% endblock %}
